@@ -3,7 +3,8 @@ import fetch from 'superagent'
 
 export default class Generate extends Component {
     state = {
-        carArray: []
+        carArray: [],
+        name: ''
     }
     // fetching from API
     fetchCars = async () => {
@@ -31,6 +32,7 @@ export default class Generate extends Component {
                             <p>Make: {car.make}</p>
                             <p>Model: {car.model}</p>
                             <p>Cool factor: {car.cool_factor}</p>
+                            <p>Owns: {String(car.owns)}</p>
                         </div>
                     )
                 }
