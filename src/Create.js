@@ -1,10 +1,6 @@
 import React, { Component } from 'react'
 import request from 'superagent'
 
-const userIdfromData = {
-    userId: 1
-};
-
 export default class Create extends Component {
 
     state = {
