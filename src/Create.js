@@ -30,8 +30,6 @@ export default class Create extends Component {
         await request
             .post('https://sleepy-reef-58614.herokuapp.com/cars')
             .send(newCar);
-
-            this.props.history.push('/garage')
     }
 
     handleChange = (e) => {
