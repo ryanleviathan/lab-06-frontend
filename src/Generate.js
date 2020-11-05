@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import fetch from 'superagent'
+import { NavLink } from 'react-router-dom';
 
 export default class Generate extends Component {
     state = {
@@ -24,6 +25,9 @@ export default class Generate extends Component {
             <h2>
                 See your Collection!
             </h2>
+            <NavLink to="/add">
+                <button>Add a vehicle</button>
+            </NavLink>
             <div>
                 {
                 this.state.carArray.length === 0
