@@ -21,9 +21,9 @@ export default class Generate extends Component {
     render() {
         return (
             <>
-            <h1>
-                Add Cars to your collection!
-            </h1>
+            <h2>
+                See your Collection!
+            </h2>
             <div>
                 {
                 this.state.carArray.length === 0
