@@ -37,6 +37,7 @@ export default class Create extends Component {
 
     render() {
         return (
+            <>
             <div className="create">
                 Add a Vehicle to your Collection!
                 <form onSubmit={this.handleSubmit}>
@@ -45,8 +46,9 @@ export default class Create extends Component {
                         <input onChange={e => this.setState({ name: e.target.value })} type="string"/>
                     </label>
                     <label>
-                        Make: 
+                        Make 
                         <select onChange={this.handleChange}>
+                            <option />
                             {
                                 this.state.makes.map(make =>
                                     <option key={make.id} value={make.id}>
@@ -78,6 +80,7 @@ export default class Create extends Component {
                     <button>Submit</button>
                 </form>
             </div>
+            </>
         )
     }
 }
