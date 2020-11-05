@@ -5,7 +5,9 @@ export default class Detail extends Component {
     render() {
         return (
             <div>
-                
+                <NavLink to="/garage">
+                    <button>Submit</button>
+                </NavLink>
             </div>
         )
     }
