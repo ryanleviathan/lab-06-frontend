@@ -79,7 +79,7 @@ export default class Create extends Component {
                         <input onChange={e => this.setState({ owns: e.target.value })} type="boolean"/>
                     </label>
                     <NavLink to="/garage">
-                    <button>Submit</button>
+                    <button onSubmit={this.handleSubmit}>Submit</button>
                     </NavLink>
                 </form>
             </div>
