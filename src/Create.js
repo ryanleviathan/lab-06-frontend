@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import request from 'superagent'
+import { NavLink } from 'react-router-dom';
 
 export default class Create extends Component {
 
@@ -29,6 +30,8 @@ export default class Create extends Component {
         await request
             .post('https://sleepy-reef-58614.herokuapp.com/cars')
             .send(newCar);
+
+            this.props.history.push('/garage')
     }
 
     handleChange = (e) => {
@@ -77,7 +80,9 @@ export default class Create extends Component {
                         Owns (true or false):
                         <input onChange={e => this.setState({ owns: e.target.value })} type="boolean"/>
                     </label>
+                    <NavLink to="/garage">
                     <button>Submit</button>
+                    </NavLink>
                 </form>
             </div>
             </>
