@@ -23,7 +23,7 @@ export default class Create extends Component {
             model: this.state.model,
             cool_factor: this.state.cool_factor,
             img: this.state.img,
-            owner_id: this.state.owner_id,
+            owner_id: 1,
             owns: this.state.owns
         };
 
@@ -69,10 +69,6 @@ export default class Create extends Component {
                     <label>
                         Image url:
                         <input onChange={e => this.setState({ img: e.target.value })} type="string"/>
-                    </label>
-                    <label>
-                        Owner id:
-                        <input onChange={e => this.setState({ owner_id: 1 })} type="number"/>
                     </label>
                     <label>
                         Owns (true or false):
