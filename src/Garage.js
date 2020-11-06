@@ -1,25 +1,23 @@
 import React, { Component } from 'react'
-import fetch from 'superagent'
-import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom'
+import { fetchCars } from './Fetch.js'
+// import FilterGarage from './FilterGarage.js'
 
-export default class Generate extends Component {
+export default class Garage extends Component {
     state = {
-        carArray: [],
-        name: ''
+        cars: []
     }
-    // fetching from API
-    fetchCars = async () => {
-        const response = await fetch.get(`https://sleepy-reef-58614.herokuapp.com/cars`)
-        this.setState({ 
-            carArray: response.body,
-        })
-    }
-    // mounting fetched data
+    // fetching from API and mounting fetched data
     componentDidMount = async () => {
-        await this.fetchCars()
+        const cars = await fetchCars()
+
+        this.setState({ cars })
     }
 
     render() {
+
+        const { cars } = this.state
+
         return (
             <>
             <h2>
@@ -28,11 +26,15 @@ export default class Generate extends Component {
             <NavLink to="/add">
                 <button>Add a vehicle</button>
             </NavLink>
+            {/* <div>
+                <FilterGarage />
+            </div> */}
             <div>
                 {
-                this.state.carArray.length === 0
+                cars.length < 0
                 ? <img src={`https://media3.giphy.com/media/3ohs7K8l2xVqyHwfGE/source.gif`} alt="Loading" />
-                : this.state.carArray.map(car =>    
+                : cars.map(car =>    
+                    <NavLink to={`detail/${car.id}`}>
                         <div> 
                             <h3>Name: {car.name}</h3>
                             <img src={car.img} alt={car.name} />
@@ -41,6 +43,7 @@ export default class Generate extends Component {
                             <p>Cool factor: {car.cool_factor}</p>
                             <p>Owns: {String(car.owns)}</p>
                         </div>
+                    </NavLink>
                     )
                 }
             </div>

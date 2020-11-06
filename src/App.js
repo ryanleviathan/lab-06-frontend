@@ -5,7 +5,7 @@ import {
   Route, 
   Switch,
 } from 'react-router-dom';
-import Generate from './Generate.js'
+import Garage from './Garage.js'
 import Create from './Create.js';
 import Detail from './Detail.js';
 import Home from './Home.js';
@@ -17,25 +17,25 @@ export default class App extends Component {
         <Router>
             <Switch>
                 <Route 
-                    path="/" 
+                    path="/"
                     exact
                     render={(routerProps) => 
                     <Home {...routerProps} />} 
                 />
                 <Route 
-                    path="/garage" 
+                    path="/garage"
                     exact
                     render={(routerProps) => 
-                    <Generate {...routerProps} />} 
+                    <Garage {...routerProps} />} 
                 />
                 <Route 
-                    path="/add" 
+                    path="/add"
                     exact
                     render={(routerProps) => 
                     <Create {...routerProps} />} 
                 />
                 <Route 
-                    path="/detail/:car" 
+                    path="/detail/:id"
                     exact
                     render={(routerProps) => 
                     <Detail {...routerProps} />} 
