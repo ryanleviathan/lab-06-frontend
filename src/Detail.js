@@ -23,11 +23,12 @@ export default class Detail extends Component {
     componentDidMount = async () => {
         const makes = await fetchMakes();
         const car = await fetchCar(this.props.match.params.id);
+        console.log(car);
 
-        const makeNameAsString = car.name
+        const makeAsString = car.make
 
         const matchingMake = makes.find((make) => {
-            return make.name === makeNameAsString
+            return make.name === makeAsString
         })
 
         this.setState({ 
@@ -37,6 +38,7 @@ export default class Detail extends Component {
             model: car.model,
             cool_factor: car.cool_factor,
             img: car.img,
+            owner_id: 1,
             owns: car.owns
         });
     }
@@ -64,7 +66,7 @@ export default class Detail extends Component {
     }
 
     handleDelete = (e) => {
-        deleteCar()
+        deleteCar(this.props.match.params.id)
     }
 
     render() {
@@ -75,11 +77,11 @@ export default class Detail extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         Name: 
-                        <input onChange={e => this.setState({ name: e.target.value })} type='string'/>
+                        <input value={this.state.name} onChange={e => this.setState({ name: e.target.value })} type='string'/>
                     </label>
                     <label>
                         Make 
-                        <select onChange={this.handleChange}>
+                        <select value={this.state.makeId} onChange={this.handleChange}>
                             <option />
                             {
                                 this.state.makes.map(make =>
@@ -94,28 +96,30 @@ export default class Detail extends Component {
                     </label>
                     <label>
                         Model: 
-                        <input onChange={e => this.setState({ model: e.target.value })} type='string'/> 
+                        <input  value={this.state.model} onChange={e => this.setState({ model: e.target.value })} type='string'/> 
                     </label>
                     <label>
                         Cool Factor (1-10):
-                        <input onChange={e => this.setState({ cool_factor: e.target.value })} type='number'/>
+                        <input value={this.state.cool_factor} onChange={e => this.setState({ cool_factor: e.target.value })} type='number'/>
                     </label>
                     <label>
                         Image url:
-                        <input onChange={e => this.setState({ img: e.target.value })} type='string'/>
+                        <input value={this.state.img} onChange={e => this.setState({ img: e.target.value })} type='string'/>
                     </label>
                     <label>
                         Owner id:
-                        <input onChange={e => this.setState({ owner_id: 1 })} type='number'/>
+                        <input  onChange={e => this.setState({ owner_id: 1 })} type='number'/>
                     </label>
                     <label>
                         Owns (true or false):
-                        <input onChange={e => this.setState({ owns: e.target.value })} type='boolean'/>
+                        <input value={this.state.owns} onChange={e => this.setState({ owns: e.target.value })} type='boolean'/>
                     </label>
-                    <NavLink to='/garage'>
-                    <button onSubmit={this.handleSubmit}>Submit</button>
-                    </NavLink>
+                    <button>Submit</button>
                 </form>
+                <button onClick={this.handleDelete}>Delete Vehicle</button>
+                <NavLink to='/garage'>
+                    <button>Back to Garage</button>
+                </NavLink>
             </div>
             </>
         )
