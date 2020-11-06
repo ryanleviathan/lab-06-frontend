@@ -107,10 +107,6 @@ export default class Detail extends Component {
                         <input value={this.state.img} onChange={e => this.setState({ img: e.target.value })} type='string'/>
                     </label>
                     <label>
-                        Owner id:
-                        <input  onChange={e => this.setState({ owner_id: 1 })} type='number'/>
-                    </label>
-                    <label>
                         Owns (true or false):
                         <input value={this.state.owns} onChange={e => this.setState({ owns: e.target.value })} type='boolean'/>
                     </label>
